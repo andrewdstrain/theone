@@ -21,7 +21,7 @@ public class ResultsServiceImpl implements ResultsService {
         Results results = responseEntity.getBody();
 
         if (results.getTotal() > 0) {
-            return responseEntity.getBody().getDocs()[0];
+            return results.getDocs()[0];
         } else {
             return null;
         }
