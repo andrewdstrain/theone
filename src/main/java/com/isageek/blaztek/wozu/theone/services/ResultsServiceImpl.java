@@ -18,6 +18,13 @@ public class ResultsServiceImpl implements ResultsService {
         httpHeaders.add("Authorization", "Bearer " + System.getenv("APIKEY"));
 
         ResponseEntity<Results> responseEntity = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>("parameters", httpHeaders), Results.class);
-        return responseEntity.getBody().getDocs()[0];
+
+        Results results = responseEntity.getBody();
+
+        if (results.getTotal() > 0) {
+            return responseEntity.getBody().getDocs()[0];
+        } else {
+            return null;
+        }
     }
 }
