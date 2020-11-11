@@ -14,7 +14,6 @@ public class ResultsServiceImpl implements ResultsService {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        System.out.println(System.getenv("APIKEY"));
         httpHeaders.add("Authorization", "Bearer " + System.getenv("APIKEY"));
 
         ResponseEntity<Results> responseEntity = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>("parameters", httpHeaders), Results.class);
